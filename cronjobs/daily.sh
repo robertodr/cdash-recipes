@@ -4,7 +4,7 @@
 
 export PATH=$PATH:/opt/torque/bin
 
-cd /home/roberto/Workspace/cdash-recipes/cronjobs
+cd /home/roberto/Workspace/cdash-recipes/psi4/daily
 rm *.o*
 rm *.e*
 
