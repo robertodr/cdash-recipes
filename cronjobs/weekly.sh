@@ -5,8 +5,8 @@
 export PATH=$PATH:/opt/torque/bin
 
 cd /home/roberto/Workspace/cdash-recipes/psi4/weekly
-rm *.o*
-rm *.e*
+rm -f *.o*
+rm -f *.e*
 
 DAY=$(date +%a)
 
