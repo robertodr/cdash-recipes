@@ -1,9 +1,13 @@
 #!/bin/bash
 
+source /Users/roberto/.bashrc
+export PATH=/opt/intel/composer_xe_2015.0.077/bin/intel64:/opt/intel/composer_xe_2015.0.077/mpirt/bin/intel64:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/opt/intel/composer_xe_2015.0.077/debugger/gdb/intel64/bin
+
 PSI4_TMPDIR=/Users/roberto/Scratch/RDR-clang3.5-accelerate-release
 mkdir -p $PSI4_TMPDIR
 export PSI4_TMPDIR
-export CTEST_MAKE_NUM_PROCS=6
+export NPROCS=8
+export CTEST_MAKE_NUM_PROCS=$NPROCS
 
 TMP_DIR=/Users/roberto/Scratch/tmprunpsi4/RDR-clang3.5-accelerate-release
 mkdir -p $TMP_DIR
@@ -20,7 +24,7 @@ export PSI4DATADIR=$TMP_DIR/lib
 mkdir -p $PSI4_TMPDIR/psi4scr
 export PSI4_SCRATCH=$PSI4_TMPDIR/psi4scr
 
-ctest -D Nightly -j6
+ctest -D Nightly -j$NPROCS
 
 cd
 rm -rf $PSI4_TMPDIR $TMP_DIR
