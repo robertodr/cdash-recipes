@@ -18,8 +18,11 @@ icpc --version
 PSI4_TMPDIR=/local/work/roberto/scratch-RDR-intel14.0-release
 mkdir -p $PSI4_TMPDIR
 export PSI4_TMPDIR
-export CTEST_MAKE_NUM_PROCS=16
+export NPROCS=`lscpu -p | egrep -v '^#' | wc -l`
+export CTEST_MAKE_NUM_PROCS=$NPROCS
 export PSI4_NUM_MPI_PROCS=1
+
+export PYTHON=`which python`
 
 TMP_DIR=/global/work/roberto/tmprunpsi4/RDR-intel14.0-release
 mkdir -p $TMP_DIR
@@ -28,7 +31,7 @@ git clone git@github.com:robertodr/psi4.git $TMP_DIR
 
 cd $TMP_DIR
 
-./setup --fc=ifort --cc=icc --cxx=icpc --type=release --plugins=on -D BUILDNAME=RDR-intel14.0-release -D SITE=stallo.uit.no
+./setup --fc=ifort --cc=icc --cxx=icpc --type=release --plugins=on --python=$PYTHON -D BUILDNAME=RDR-intel14.0-release -D SITE=stallo.uit.no
 
 cd $TMP_DIR/obj
 
@@ -36,7 +39,7 @@ export PSI4DATADIR=$TMP_DIR/lib
 mkdir -p $PSI4_TMPDIR/psi4scr
 export PSI4_SCRATCH=$PSI4_TMPDIR/psi4scr
 
-ctest -D Nightly -j16
+ctest -D Nightly -j$NPROCS
 
 cd
 rm -rf $PSI4_TMPDIR $TMP_DIR
