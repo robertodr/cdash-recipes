@@ -6,7 +6,7 @@ export PATH=/opt/intel/composer_xe_2015.0.077/bin/intel64:/opt/intel/composer_xe
 PSI4_TMPDIR=/Users/roberto/Scratch/RDR-clang3.5-accelerate-debug
 mkdir -p $PSI4_TMPDIR
 export PSI4_TMPDIR
-export NPROCS=8
+export NPROCS=`sysctl -n hw.ncpu`
 export CTEST_MAKE_NUM_PROCS=$NPROCS
 
 TMP_DIR=/Users/roberto/Scratch/tmprunpsi4/RDR-clang3.5-accelerate-debug
