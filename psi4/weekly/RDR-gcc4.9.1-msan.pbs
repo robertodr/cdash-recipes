@@ -11,7 +11,11 @@ PSI4_TMPDIR=/local/work/roberto/scratch-RDR-gcc4.9.1-msan
 mkdir -p $PSI4_TMPDIR
 export PSI4_TMPDIR
 export CTEST_MAKE_NUM_PROCS=16
+export NPROCS=`lscpu -p | egrep -v '^#' | wc -l`
+export CTEST_MAKE_NUM_PROCS=$NPROCS
 export PSI4_NUM_MPI_PROCS=1
+
+export PYTHON=`which python`
 
 TMP_DIR=/global/work/roberto/tmprunpsi4/RDR-gcc4.9.1-msan
 mkdir -p $TMP_DIR
@@ -20,7 +24,7 @@ git clone git@github.com:robertodr/psi4.git $TMP_DIR
 
 cd $TMP_DIR
 
-./setup --fc=gfortran --cc=gcc --cxx=g++ --type=debug --plugins=on --msan -D BUILDNAME=RDR-gcc4.9.1-msan -D SITE=stallo.uit.no
+./setup --fc=gfortran --cc=gcc --cxx=g++ --type=debug --plugins=on --msan --python=$PYTHON -D BUILDNAME=RDR-gcc4.9.1-msan -D SITE=stallo.uit.no
 
 cd $TMP_DIR/obj
 
@@ -29,6 +33,7 @@ mkdir -p $PSI4_TMPDIR/psi4scr
 export PSI4_SCRATCH=$PSI4_TMPDIR/psi4scr
 export CTEST_SCRIPT=$TMP_DIR/cdash/CDashMSan.cmake
 
+# No need to pass the number of processors, the CTest script knows how to do it
 ctest -S$CTEST_SCRIPT 
 
 cd
