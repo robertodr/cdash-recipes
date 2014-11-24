@@ -10,6 +10,7 @@ rm -f *.e*
 
 DAY=$(date +%a)
 
-for i in RDR-*.pbs; do
+for i in RDR-gcc4.9.1-asan.pbs RDR-gcc4.9.1-tsan.pbs RDR-gcc4.9.1-ubsan.pbs RDR-gcc4.9.1-valgrind.pbs
+do
     qsub $i
 done
