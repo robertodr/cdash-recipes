@@ -16,7 +16,7 @@ git clone git@github.com:psi4/psi4.git $TMP_DIR
 
 cd $TMP_DIR
 
-./setup --fc=gfortran --cc=clang --cxx=clang++ --type=release --plugins=on --accelerate -D BUILDNAME=RDR-clang3.5-accelerate-release -D SITE=merzbow
+./setup --fc=gfortran --cc=clang --cxx=clang++ --type=release --plugins=on --accelerate -D BUILDNAME=RDR-clang3.5-accelerate-release -D SITE=merzbow --python=/usr/local/bin/python
 
 cd $TMP_DIR/obj
 
