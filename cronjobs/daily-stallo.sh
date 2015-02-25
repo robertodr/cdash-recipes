@@ -4,7 +4,7 @@
 
 export PATH=$PATH:/opt/torque/bin
 
-cd /home/roberto/Workspace/cdash-recipes/psi4/daily
+cd /home/roberto/Workspace/cdash-recipes/psi4/daily/stallo.uit.no
 rm -f *.o*
 rm -f *.e*
 
