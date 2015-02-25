@@ -33,7 +33,7 @@ cd $TMP_DIR
 
 ./setup --fc=ifort --cc=icc --cxx=icpc --type=debug --plugins=on --python=$PYTHON -D BUILDNAME=RDR-intel12.1.2-debug -D SITE=stallo.uit.no
 
-cd $TMP_DIR/obj
+cd $TMP_DIR/objdir
 
 export PSI4DATADIR=$TMP_DIR/lib
 mkdir -p $PSI4_TMPDIR/psi4scr

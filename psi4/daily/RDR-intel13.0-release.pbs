@@ -33,7 +33,7 @@ cd $TMP_DIR
 
 ./setup --fc=ifort --cc=icc --cxx=icpc --type=release --plugins=on --python=$PYTHON -D BUILDNAME=RDR-intel13.0-release -D SITE=stallo.uit.no
 
-cd $TMP_DIR/obj
+cd $TMP_DIR/objdir
 
 export PSI4DATADIR=$TMP_DIR/lib
 mkdir -p $PSI4_TMPDIR/psi4scr

@@ -18,7 +18,7 @@ cd $TMP_DIR
 
 ./setup --fc=gfortran --cc=clang --cxx=clang++ --type=release --plugins=on --accelerate -D BUILDNAME=RDR-clang3.5-accelerate-release -D SITE=merzbow --python=/usr/local/bin/python
 
-cd $TMP_DIR/obj
+cd $TMP_DIR/objdir
 
 export PSI4DATADIR=$TMP_DIR/lib
 mkdir -p $PSI4_TMPDIR/psi4scr
