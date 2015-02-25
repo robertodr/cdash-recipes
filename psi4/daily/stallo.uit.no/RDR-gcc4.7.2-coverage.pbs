@@ -16,7 +16,9 @@ gfortran --version
 gcc --version
 g++ --version
 
-PSI4_TMPDIR=/local/work/roberto/scratch-RDR-gcc4.7.2-coverage
+export build_name=RDR-gcc4.7.2-coverage
+export site_name=stallo.uit.no
+PSI4_TMPDIR=/local/work/roberto/scratch-${build_name}
 mkdir -p $PSI4_TMPDIR
 export PSI4_TMPDIR
 export NPROCS=`lscpu -p | egrep -v '^#' | wc -l`
@@ -25,14 +27,14 @@ export PSI4_NUM_MPI_PROCS=1
 
 export PYTHON=`which python`
 
-TMP_DIR=/global/work/roberto/tmprunpsi4/RDR-gcc4.7.2-coverage
+TMP_DIR=/global/work/roberto/tmprunpsi4/${build_name}
 mkdir -p $TMP_DIR
 
 git clone git@github.com:psi4/psi4.git $TMP_DIR
 
 cd $TMP_DIR
 
-./setup --fc=gfortran --cc=gcc --cxx=g++ --coverage --plugins=on --python=$PYTHON -D BUILDNAME=RDR-gcc4.7.2-coverage -D SITE=stallo.uit.no
+./setup --fc=gfortran --cc=gcc --cxx=g++ --coverage --plugins=on --python=$PYTHON -D BUILDNAME=${build_name} -D SITE=${site_name}
 
 cd $TMP_DIR/objdir
 

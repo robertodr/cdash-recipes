@@ -17,7 +17,9 @@ ifort --version
 icc --version
 icpc --version
 
-PSI4_TMPDIR=/local/work/roberto/scratch-RDR-intel13.0-release
+export build_name=RDR-intel13.0-release
+export site_name=stallo.uit.no
+PSI4_TMPDIR=/local/work/roberto/scratch-${build_name}
 mkdir -p $PSI4_TMPDIR
 export PSI4_TMPDIR
 export NPROCS=`lscpu -p | egrep -v '^#' | wc -l`
@@ -33,7 +35,7 @@ git clone git@github.com:psi4/psi4.git $TMP_DIR
 
 cd $TMP_DIR
 
-./setup --fc=ifort --cc=icc --cxx=icpc --type=release --plugins=on --python=$PYTHON -D BUILDNAME=RDR-intel13.0-release -D SITE=stallo.uit.no
+./setup --fc=ifort --cc=icc --cxx=icpc --type=release --plugins=on --python=$PYTHON -D BUILDNAME=${build_name} -D SITE=${site_name}
 
 cd $TMP_DIR/objdir
 
