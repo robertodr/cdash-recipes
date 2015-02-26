@@ -14,12 +14,14 @@ export PATH=/global/home/roberto/Software/bin:$PATH
 which cmake
 cmake --version
 
+which mpif90
 which mpicc
 which mpiCC
+mpif90 --version
 mpicc --version
 mpiCC --version
 
-export build_name=RDR-intel13.1-release-MPI_JK
+export build_name=RDR-intel13.1-release-MPI_ERD-JK
 export site_name=gardar.nhpc.hi.is
 PSI4_TMPDIR=/scratch/roberto/scratch-${build_name}
 mkdir -p $PSI4_TMPDIR
@@ -37,7 +39,7 @@ git clone git@github.com:psi4/psi4.git $TMP_DIR
 
 cd $TMP_DIR
 
-./setup --cc=mpicc --cxx=mpiCC --mpi --plugins=on --python=$PYTHON --type=release --jkfactory -D BUILDNAME=${build_name} -D SITE=${site_name}
+./setup --fc=mpif90 --cc=mpicc --cxx=mpiCC --mpi --plugins=on --python=$PYTHON --type=release --erd --jkfactory -D BUILDNAME=${build_name} -D SITE=${site_name}
 
 cd $TMP_DIR/objdir
 
