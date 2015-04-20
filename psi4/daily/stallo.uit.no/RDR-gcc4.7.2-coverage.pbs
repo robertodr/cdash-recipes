@@ -4,7 +4,8 @@
 #PBS -A nn4654k
 
 module purge
-module load gcc/4.7.2-coalesce
+module rm intel
+module load gcc/4.7.2
 module load cmake/3.1.0
 module load python/2.7.3
 module load gsl/1.15
