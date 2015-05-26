@@ -2,6 +2,8 @@
 # Written by Arnfinn Hykkerud Steindal
 # adapted by Roberto Di Remigio
 
+source /etc/bashrc
+
 export PATH=$PATH:/opt/torque/bin
 
 cd /home/roberto/Workspace/cdash-recipes/psi4/daily/stallo.uit.no
