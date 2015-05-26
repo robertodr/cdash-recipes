@@ -2,7 +2,7 @@
 # Written by Arnfinn Hykkerud Steindal
 # adapted by Roberto Di Remigio
 
-export PATH=$PATH:/opt/torque/bin
+export PATH=$PATH:/opt/torque/bin:/opt/gold/bin
 
 cd /home/roberto/Workspace/cdash-recipes/psi4/daily/gardar.nhpc.hi.is
 rm -f *.o*

@@ -8,6 +8,7 @@ module load intel/13.1
 module load python/2.7.5
 module load mkl/11.0.0
 module load openmpi
+module load hdf5
 
 export PATH=/global/home/roberto/Software/bin:$PATH
 
@@ -31,6 +32,7 @@ export CTEST_MAKE_NUM_PROCS=$NPROCS
 export PSI4_NUM_MPI_PROCS=1
 
 export PYTHON=`which python`
+export GSL_CONFIG_EXECUTABLE=/global/home/roberto/Software/gsl/bin/gsl-config
 
 TMP_DIR=/scratch/roberto/tmprunpsi4/${build_name}
 mkdir -p $TMP_DIR
@@ -39,7 +41,7 @@ git clone git@github.com:psi4/psi4.git $TMP_DIR
 
 cd $TMP_DIR
 
-./setup --fc=ifort --cc=icc --cxx=icpc --plugins=on --python=$PYTHON --type=release --erd -D BUILDNAME=${build_name} -D SITE=${site_name}
+./setup --fc=ifort --cc=icc --cxx=icpc --plugins=on --python=$PYTHON --type=release -DGSL_CONFIG_EXECUTABLE=${GSL_CONFIG_EXECUTABLE} --erd -D BUILDNAME=${build_name} -D SITE=${site_name}
 
 cd $TMP_DIR/objdir
 
