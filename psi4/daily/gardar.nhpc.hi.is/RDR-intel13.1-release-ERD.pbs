@@ -41,7 +41,7 @@ git clone git@github.com:psi4/psi4.git $TMP_DIR
 
 cd $TMP_DIR
 
-./setup --fc=ifort --cc=icc --cxx=icpc --plugins=on --python=$PYTHON --type=release -DGSL_CONFIG_EXECUTABLE=${GSL_CONFIG_EXECUTABLE} --erd -D BUILDNAME=${build_name} -D SITE=${site_name}
+./setup --fc=ifort --cc=icc --cxx=icpc --plugins=on --python=$PYTHON --type=release -DENABLE_CHEMPS2=OFF --erd -D BUILDNAME=${build_name} -D SITE=${site_name}
 
 cd $TMP_DIR/objdir
 
